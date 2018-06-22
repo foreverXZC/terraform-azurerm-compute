@@ -275,8 +275,17 @@ resource "azurerm_network_interface" "vm" {
 
   ip_configuration {
     name                          = "ipconfig${count.index}"
-    subnet_id                     = "${var.vnet_subnet_id}"
+    subnet_id                     = "${module.network.vnet_subnets[0]}"
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = "${length(azurerm_public_ip.vm.*.id) > 0 ? element(concat(azurerm_public_ip.vm.*.id, list("")), count.index) : ""}"
   }
+}
+
+module "network" {
+  source              = "Azure/network/azurerm"
+  version             = "~> 1.1.1"
+  location            = "westus2"
+  allow_rdp_traffic   = "true"
+  allow_ssh_traffic   = "true"
+  resource_group_name = "terraform-compute"
 }
