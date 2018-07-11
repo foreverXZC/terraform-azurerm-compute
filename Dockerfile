@@ -26,4 +26,9 @@ COPY . /usr/src/${MODULE_NAME}
 RUN ssh-keygen -q -t rsa -b 4096 -f $HOME/.ssh/id_rsa
 
 WORKDIR /usr/src/${MODULE_NAME}
-RUN ["bundle", "install", "--gemfile", "./Gemfile"]
+RUN apt-get install -y unzip >/dev/null
+RUN wget https://releases.hashicorp.com/terraform/0.11.1/terraform_0.11.1_linux_amd64.zip >/dev/null 2>&1
+RUN unzip terraform_0.11.1_linux_amd64.zip >/dev/null
+RUN wget https://storage.googleapis.com/golang/go1.9.2.linux-amd64.tar.gz >/dev/null 2>&1
+RUN tar -zxvf go1.9.2.linux-amd64.tar.gz -C /usr/local/ >/dev/null
+RUN mv terraform /usr/local/bin
