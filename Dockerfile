@@ -26,7 +26,7 @@ COPY . /usr/src/${MODULE_NAME}
 RUN ssh-keygen -q -t rsa -b 4096 -f $HOME/.ssh/id_rsa
 
 WORKDIR /usr/src/${MODULE_NAME}
-RUN apt-get install software-properties-common >dev/null
+RUN apt-get install software-properties-common >/dev/null
 RUN add-apt-repository ppa:gophers/archive >/dev/null
 RUN apt-get update >/dev/null
 RUN apt-get install golang-1.10-go >/dev/null
