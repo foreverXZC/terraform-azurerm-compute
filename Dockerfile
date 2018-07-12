@@ -32,3 +32,9 @@ RUN unzip terraform_0.11.1_linux_amd64.zip >/dev/null
 RUN wget https://storage.googleapis.com/golang/go1.9.2.linux-amd64.tar.gz >/dev/null 2>&1
 RUN tar -zxvf go1.9.2.linux-amd64.tar.gz -C /usr/local/ >/dev/null
 RUN mv terraform /usr/local/bin
+
+RUN go get golang.org/x/crypto/ssh
+RUN go get github.com/gruntwork-io/terratest/modules/retry
+RUN go get github.com/gruntwork-io/terratest/modules/ssh
+RUN go get github.com/gruntwork-io/terratest/modules/terraform
+RUN go get github.com/gruntwork-io/terratest/modules/test-structure
