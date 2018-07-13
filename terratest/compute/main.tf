@@ -7,7 +7,7 @@ resource "random_id" "ip_dns" {
 }
 
 module "ubuntuservers" {
-  source                       = "Azure/compute/azurerm"
+  source                       = "../../"
   location                     = "${var.location}"
   admin_username               = "${var.admin_username}"
   admin_password               = "${var.admin_password}"
@@ -20,7 +20,7 @@ module "ubuntuservers" {
 }
 
 module "debianservers" {
-  source                       = "Azure/compute/azurerm"
+  source                       = "../../"
   location                     = "${var.location}"
   vm_hostname                  = "mylinvm"
   admin_username               = "${var.admin_username}"
