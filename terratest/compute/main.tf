@@ -26,7 +26,7 @@ module "debianservers" {
   admin_username               = "${var.admin_username}"
   admin_password               = "${var.admin_password}"
   vm_os_simple                 = "${var.vm_os_simple_2}"
-  public_ip_dns                = ["debiansimplevmips-${random_id.ip_dns.hex}"] // change to a unique name per datacenter region
+  public_ip_dns                = ["debiansimplevmips-${random_id.ip_dns.hex}"]        // change to a unique name per datacenter region
   vnet_subnet_id               = "${module.network.vnet_subnets[0]}"
   ssh_key                      = "${var.ssh_key}"
   resource_group_name          = "${var.resource_group_name}-${random_id.ip_dns.hex}"
