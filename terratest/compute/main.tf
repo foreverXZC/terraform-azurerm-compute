@@ -15,7 +15,7 @@ module "ubuntuservers" {
   public_ip_dns                = ["ubuntusimplevmips-${random_id.ip_dns.hex}"]
   vnet_subnet_id               = "${module.network.vnet_subnets[0]}"
   ssh_key                      = "${var.ssh_key}"
-  resource_group_name          = "${var.resource_group_name}"
+  resource_group_name          = "${var.resource_group_name}-${random_id.ip_dns.hex}"
   public_ip_address_allocation = "static"
 }
 
@@ -29,7 +29,7 @@ module "debianservers" {
   public_ip_dns                = ["debiansimplevmips-${random_id.ip_dns.hex}"] // change to a unique name per datacenter region
   vnet_subnet_id               = "${module.network.vnet_subnets[0]}"
   ssh_key                      = "${var.ssh_key}"
-  resource_group_name          = "${var.resource_group_name}"
+  resource_group_name          = "${var.resource_group_name}-${random_id.ip_dns.hex}"
   public_ip_address_allocation = "static"
 }
 
@@ -37,5 +37,5 @@ module "network" {
   source              = "Azure/network/azurerm"
   version             = "2.0.0"
   location            = "westus2"
-  resource_group_name = "${var.resource_group_name}"
+  resource_group_name = "${var.resource_group_name}-${random_id.ip_dns.hex}"
 }
