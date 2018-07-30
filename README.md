@@ -1,4 +1,4 @@
-# terraform-azurerm-compute
+# terraform-azurerm-compute-test
 
 [![Build Status](https://travis-ci.org/Azure/terraform-azurerm-compute.svg?branch=master)](https://travis-ci.org/Azure/terraform-azurerm-compute)
 
